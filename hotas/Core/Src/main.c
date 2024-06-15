@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
 #include <stdio.h>
+#include "st7735.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,27 +113,63 @@ int main(void) {
 	MX_SPI1_Init();
 	/* USER CODE BEGIN 2 */
 	bool toggle = false;
-	uint32_t value_adc;
-
-
-	HAL_ADCEx_Calibration_Start(&hadc1);
-
+//	HAL_ADCEx_Calibration_Start(&hadc1);
+	ST7735_Init();
+	ST7735_FillScreen(ST7735_BLACK);
+	HAL_Delay(1000);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		if (toggle)
-			HAL_GPIO_WritePin(USR_LED_GPIO_Port, USR_LED_Pin, GPIO_PIN_RESET);
-		else
-			HAL_GPIO_WritePin(USR_LED_GPIO_Port, USR_LED_Pin, GPIO_PIN_SET);
 		toggle = !toggle;
+		if(toggle){
+			HAL_GPIO_WritePin(USR_LED_GPIO_Port, USR_LED_Pin, GPIO_PIN_RESET);
+		}
+		else{
+			HAL_GPIO_WritePin(USR_LED_GPIO_Port, USR_LED_Pin, GPIO_PIN_SET);
+		}
 
-		HAL_ADC_Start(&hadc1);
-		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-		value_adc = HAL_ADC_GetValue(&hadc1);
-		HAL_Delay(1000);
-		printf("%u\r\n",value_adc);
+	    // Check fonts
+	    ST7735_FillScreen(ST7735_BLACK);
+	    ST7735_WriteString(0, 0, "Font_7x10, red on black, lorem ipsum dolor sit amet", Font_7x10, ST7735_RED, ST7735_BLACK);
+	    ST7735_WriteString(0, 3*10, "Font_11x18, green, lorem ipsum", Font_11x18, ST7735_GREEN, ST7735_BLACK);
+	    ST7735_WriteString(0, 3*10+3*18, "Font_16x26", Font_16x26, ST7735_BLUE, ST7735_BLACK);
+	    HAL_Delay(2000);
+
+	    // Check colors
+	    ST7735_FillScreen(ST7735_BLACK);
+	    ST7735_WriteString(0, 0, "BLACK", Font_11x18, ST7735_WHITE, ST7735_BLACK);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_BLUE);
+	    ST7735_WriteString(0, 0, "BLUE", Font_11x18, ST7735_BLACK, ST7735_BLUE);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_RED);
+	    ST7735_WriteString(0, 0, "RED", Font_11x18, ST7735_BLACK, ST7735_RED);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_GREEN);
+	    ST7735_WriteString(0, 0, "GREEN", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_CYAN);
+	    ST7735_WriteString(0, 0, "CYAN", Font_11x18, ST7735_BLACK, ST7735_CYAN);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_MAGENTA);
+	    ST7735_WriteString(0, 0, "MAGENTA", Font_11x18, ST7735_BLACK, ST7735_MAGENTA);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_YELLOW);
+	    ST7735_WriteString(0, 0, "YELLOW", Font_11x18, ST7735_BLACK, ST7735_YELLOW);
+	    HAL_Delay(2500);
+
+	    ST7735_FillScreen(ST7735_WHITE);
+	    ST7735_WriteString(0, 0, "WHITE", Font_11x18, ST7735_BLACK, ST7735_WHITE);
+	    HAL_Delay(2500);
+
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
