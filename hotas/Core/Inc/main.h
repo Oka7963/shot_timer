@@ -60,6 +60,12 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define USR_LED_Pin GPIO_PIN_13
 #define USR_LED_GPIO_Port GPIOC
+#define SPI1_CS_Pin GPIO_PIN_12
+#define SPI1_CS_GPIO_Port GPIOB
+#define DATA_CMD_Pin GPIO_PIN_13
+#define DATA_CMD_GPIO_Port GPIOB
+#define RES_Pin GPIO_PIN_14
+#define RES_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
