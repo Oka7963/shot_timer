@@ -14,6 +14,7 @@
 #include "st7735.h"
 #include "main.h" // pin defines and  #include "stm32f1xx_hal.h"
 
+#define VERSION 		"SC_0.24.070701"
 
 #define MAX_RECORD		256
 #define MAX_SHOW_ON_SCREEN	8

@@ -118,6 +118,7 @@ int main(void)
 	printf("==== System Start ====\r\n");
 
     ST7735_WriteString(0, 0, "== Initialized ==", Font_7x10, ST7735_WHITE, ST7735_BLACK);
+    ST7735_WriteString(1, 11, VERSION, Font_7x10, ST7735_WHITE, ST7735_BLACK);
     HAL_Delay(1000);
 
   /* USER CODE END 2 */
