@@ -14,8 +14,9 @@
 #include "st7735.h"
 #include "main.h" // pin defines and  #include "stm32f1xx_hal.h"
 
+
 #define MAX_RECORD		256
-#define MAX_SHOW_ON_SCREEN	15
+#define MAX_SHOW_ON_SCREEN	8
 
 typedef enum
 {
@@ -35,6 +36,7 @@ typedef struct
 	uint32_t uShotTickStart;	// shot count tick zero point
 	uint8_t uShotCnt;			// lines of record
 	uint32_t pShotRec[MAX_RECORD]; //all record
+	uint32_t uCurrentTick;		// from start to present time
 
 }scSystemState;
 
